@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-book Grátis: Venda para a Europa e Ganhe em Euro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --green-primary: #00ff88;
+            --green-dark: #00cc6a;
+            --black: #0a0e0d;
+            --text-white: #ffffff;
+            --text-gray: #a0b5ad;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--black);
+            color: var(--text-white);
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Main Grid */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        @media (max-width: 1000px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+        }
+
+        /* Left Side - Image & Title */
+        .left-side {
+            text-align: center;
+        }
+
+        .euro-image {
+            width: 100%;
+            max-width: 500px;
+            height: 350px;
+            border-radius: 24px;
+            overflow: hidden;
+            margin: 0 auto 40px;
+            box-shadow: 0 30px 60px rgba(0, 255, 136, 0.2);
+            position: relative;
+        }
+
+        .euro-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .euro-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 255, 136, 0.15);
+            border: 1px solid var(--green-primary);
+            color: var(--green-primary);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+        }
+
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .main-title .highlight {
+            color: var(--green-primary);
+        }
+
+        .subtitle {
+            font-size: clamp(0.95rem, 2vw, 1.2rem);
+            color: var(--text-gray);
+            line-height: 1.7;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Right Side - Form */
+        .right-side {
+            position: relative;
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .form-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            color: var(--text-white);
+            line-height: 1.2;
+        }
+
+        .form-title span {
+            color: var(--green-primary);
+        }
+
+        .form-subtitle {
+            color: var(--text-gray);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 22px;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-white);
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 18px 24px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            font-size: 16px;
+            font-family: inherit;
+            color: var(--text-white);
+            transition: all 0.3s ease;
+        }
+
+        input::placeholder {
+            color: var(--text-gray);
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--green-primary);
+            background: rgba(0, 255, 136, 0.05);
+            box-shadow: 0 0 0 4px rgba(0, 255, 136, 0.1);
+        }
+
+        button {
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
+            color: var(--black);
+            border: none;
+            border-radius: 14px;
+            font-size: 18px;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.5);
+        }
+
+        button:hover::before {
+            left: 100%;
+        }
+
+        button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .privacy {
+            font-size: 13px;
+            color: var(--text-gray);
+            margin-top: 20px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        /* Success */
+        .success {
+            display: none;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        .success.show {
+            display: block;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--green-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 50px;
+            box-shadow: 0 20px 50px rgba(0, 255, 136, 0.4);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 20px 50px rgba(0, 255, 136, 0.4); }
+            50% { box-shadow: 0 20px 70px rgba(0, 255, 136, 0.6); }
+        }
+
+        .success h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--green-primary);
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .success p {
+            color: var(--text-gray);
+            font-size: 16px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 20px 40px;
+            background: var(--green-primary);
+            color: var(--black);
+            border: none;
+            border-radius: 14px;
+            font-size: 18px;
+            font-weight: 700;
+            font-family: inherit;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 50px rgba(0, 255, 136, 0.5);
+        }
+
+        .download-info {
+            margin-top: 20px;
+            font-size: 13px;
+            color: var(--text-gray);
+        }
+
+        form.hide {
+            display: none;
+        }
+
+        /* Loading */
+        .loading {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            border: 3px solid rgba(10, 14, 13, 0.3);
+            border-top-color: var(--black);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body {
+                padding: 30px 15px;
+            }
+
+            .euro-image {
+                height: 250px;
+                margin-bottom: 30px;
+            }
+
+            .form-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-grid">
+            <!-- Left Side - Image & Title -->
+            <div class="left-side">
+                <div class="euro-image">
+                    <img src="https://images.unsplash.com/photo-1580519542036-c47de6196ba5?w=800&q=80" alt="Notas de Euro">
+                </div>
+
+                <div class="badge">🎁 E-book 100% Gratuito</div>
+
+                <h1 class="main-title">
+                    Venda do Brasil para a Europa e <span class="highlight">Ganhe em Euro</span>
+                </h1>
+            </div>
+
+            <!-- Right Side - Form -->
+            <div class="right-side">
+                <div class="form-header">
+                    <h2 class="form-title">
+                        Baixe <span>Grátis</span><br>
+                        Seu E-book
+                    </h2>
+                    <p class="form-subtitle">
+                        Preencha os dados abaixo para receber acesso imediato
+                    </p>
+                </div>
+
+                <form id="form">
+                    <div class="form-group">
+                        <label for="nome">Nome Completo</label>
+                        <input type="text" id="nome" placeholder="Digite seu nome completo" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" placeholder="seu@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="whatsapp">WhatsApp</label>
+                        <input type="tel" id="whatsapp" placeholder="(00) 00000-0000" required>
+                    </div>
+
+                    <button type="submit" id="btn">
+                        <span id="btnText">🚀 Receber E-book Grátis</span>
+                    </button>
+
+                    <p class="privacy">🔒 Seus dados estão 100% protegidos</p>
+                </form>
+
+                <div class="success" id="success">
+                    <div class="success-icon">✓</div>
+                    <h2>Parabéns! 🎉</h2>
+                    <p>Seu e-book está pronto! Clique no botão abaixo para acessar:</p>
+                    <a href="https://drive.google.com/file/d/10o364eQY5zP1iDa_Zgh2WZ46YM-fA6eS/view?usp=sharing" target="_blank" class="download-btn" id="downloadBtn">
+                        📥 Acessar E-book Agora
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Máscara WhatsApp
+        document.getElementById('whatsapp').addEventListener('input', function(e) {
+            let v = e.target.value.replace(/\D/g, '').slice(0, 11);
+            if (v.length > 7) {
+                v = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+            } else if (v.length > 2) {
+                v = `(${v.slice(0,2)}) ${v.slice(2)}`;
+            } else if (v.length > 0) {
+                v = `(${v}`;
+            }
+            e.target.value = v;
+        });
+
+        // Envio do formulário
+        document.getElementById('form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const btn = document.getElementById('btn');
+            const btnText = document.getElementById('btnText');
+            
+            btn.disabled = true;
+            btnText.innerHTML = '<span class="loading"></span>';
+
+            const dados = {
+                nome: document.getElementById('nome').value,
+                email: document.getElementById('email').value,
+                whatsapp: document.getElementById('whatsapp').value
+            };
+
+            try {
+                await fetch('https://cloud.activepieces.com/api/v1/webhooks/j7nn8BqlKUMAjpp5jq3rI', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(dados)
+                });
+            } catch(err) {}
+
+            document.getElementById('form').classList.add('hide');
+            document.getElementById('success').classList.add('show');
+
+            // Abre o link do Google Drive automaticamente
+            setTimeout(() => {
+                window.open('https://drive.google.com/file/d/10o364eQY5zP1iDa_Zgh2WZ46YM-fA6eS/view?usp=sharing', '_blank');
+            }, 500);
+        });
+    </script>
+</body>
+</html>
